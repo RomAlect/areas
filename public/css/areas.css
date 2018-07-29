@@ -1,0 +1,73 @@
+.left-bar{
+    position: absolute;
+    top: 10px;
+    left: 10%;
+    z-index: 5;
+    background: transparent;
+    border: none;
+}
+
+/*.center-bar{
+    display: block;
+    margin: 0;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    margin-right: -50%;
+    opacity: 0.5;
+    z-index: 5;
+}*/
+
+.center-bar{
+    
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    z-index: 5;
+}
+
+.center-bar a{
+    min-width: 100px;
+    font-weight: bold;
+}
+.center-bar a.btn{
+    line-height: 1;
+}
+
+.city-list{
+   overflow-y: scroll; 
+   height: 442px; 
+   border-bottom: 1px solid #DFDFDF;
+   border-radius: 4px;
+}
+
+.left-bar form > label{
+    border: 1px solid #6C757D;
+    border-radius: 4px;
+    padding: 4px;
+    background-color: #fff;
+}
+
+.float-left p{
+
+    margin-bottom: 0;
+}
+
+.card-header{
+    background-color: #6C757D;
+    color: #fff;
+    font-size: 20px;
+}
+
+#map{
+    height: 100%;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
