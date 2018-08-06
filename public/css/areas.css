@@ -19,7 +19,7 @@
 }*/
 
 .center-bar{
-    
+
     position: absolute;
     top: 95%;
     left: 50%;
@@ -38,17 +38,15 @@
 }
 
 .city-list{
-   overflow-y: scroll; 
-   height: 442px; 
-   border-bottom: 1px solid #DFDFDF;
-   border-radius: 4px;
+    overflow-y: scroll; 
+    height: 442px; 
+    border-bottom: 1px solid #DFDFDF;
+    border-radius: 4px;
 }
 
-.left-bar form > label{
-    border: 1px solid #6C757D;
-    border-radius: 4px;
-    padding: 4px;
-    background-color: #fff;
+label{
+    display: flex;
+    margin-bottom: 0;
 }
 
 .float-left p{
@@ -71,3 +69,24 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+.controller{
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.white-label{
+    border: 2px solid #6C757D;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    padding: 0.375rem 0.75rem;
+}
+
+
