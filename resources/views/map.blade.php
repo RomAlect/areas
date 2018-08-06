@@ -2,13 +2,35 @@
 
 @section('content')
 <div class="card left-bar">
-    <div class="card-header font-weight-bold">Find the place</div>
-
-    <form class="form-inline" >                            
+    <div class="card-header font-weight-bold">Select the place</div>
+    <form class="form-inline">                            
+        <select class="form-control" id="select_city" name="address" onchange="enableCRUD()">
+            <option value="">City...</option>
+            @foreach($places as $place)
+            <option>
+                {{$place->address}}
+            </option>
+            @endforeach
+        </select>
+        <button id="showOnMap" class="btn btn-secondary ml-2 my-2 crud" disabled>Show</button>
+    </form>
+    <div class="container">
+        <div class="row d-flex ">
+            <button class="btn btn-warning mr-1 flex-fill crud" disabled>Modify</button>            
+            <button class="btn btn-danger ml-1 flex-fill crud" disabled>Delete</button>
+        </div>   
+        <div class="row d-flex ">
+            <button id="add_btn" class="btn btn-primary flex-fill mt-2">Add</button>
+        </div>
+    </div>
+    <!--Start: Find the place with GeoCode-->
+    <div class="card-header font-weight-bold" hidden>Find the place</div>
+    <form class="form-inline" hidden>                            
         <label for="address" class="mx-2 my-2 font-weight-bold">City/Place</label>                
         <input id="address" type="textbox" value="" class="form-control mx-2 my-2">
         <input id="submit" type="button" class="btn btn-secondary mx-2 my-2" value="Find">
     </form>
+    <!--Finish: Find the place with GeoCode-->
 
     <div class="modal-header bg-warning hidden" {{ ($isSaved === true || $isExist === true)? '' : 'hidden' }}>
          <h5 class="modal-title font-weight-bold  text-body">Add the place</h5>

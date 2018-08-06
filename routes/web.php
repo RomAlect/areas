@@ -17,4 +17,4 @@ Route::post('/', 'HomeController@add')->name('add');
 
 Route::get('/distances', 'DistanceController@index')->name('distances');
 
-Route::post('/distances', 'DistanceController@calculate')->name('calculate');
+Route::get('/calculate', 'DistanceController@calculate')->name('calculate');

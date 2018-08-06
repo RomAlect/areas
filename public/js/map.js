@@ -57,4 +57,13 @@ function showAddForm(address, latitude, longitude) {
     jQuery('#isSaved, #isExist').attr('hidden', true);
 }
 
+function enableCRUD(){
+    if(jQuery('#select_city option:selected').val() !== ""){
+    jQuery('.crud').attr('disabled', false);
+    }
+    else{
+        jQuery('.crud').attr('disabled', true);
+    }
+}
+
 

@@ -10,8 +10,9 @@ class HomeController extends Controller {
 
     //Renders the map page
     public function index() {
-        
-        return view('map', [            
+        $places = Place::orderBy('address')->get();
+        return view('map', [  
+            'places' => $places,
             'isSaved' => false, //is used to show/hide 
             'isExist' => false  //the status messages
         ]);
