@@ -15,8 +15,13 @@ use Illuminate\Support\Collection;
  *
  * @author Roman
  */
+//Helper class allowing calculate distances between cities on the map
 class DistanceCalculator {
 
+    //Calculates distances between cities from the database. 
+    //Results are written in the $distances associative array, where
+    //'key' is address, and 'value' is the distance to this address from the selected city.
+    //The $distances array is sorted on values with asort() and returned
     public static function listNearest(Collection $places, $address) {
         $from_place = $places->where('address', $address)->first();
 
@@ -29,10 +34,13 @@ class DistanceCalculator {
         asort($distances);
         return $distances;
     }
-
+    
+    //This method is used when the place is not selected.
+    //Result is written in the $cities associative array, where
+    //'key' is address, and 'value' is 'lat/lng' pair
     public static function listAll(Collection $places) {
         foreach ($places as $place) {
-            $cities[$place->address] = round($place->lat,3) . ' / ' . round($place->lng,3);
+            $cities[$place->address] = round($place->lat, 6) . ' / ' . round($place->lng, 6);
         }
         return $cities;
     }

@@ -17,9 +17,8 @@ class DistanceController extends Controller {
         ]);
     }
 
-    //Calculates distances between cities from the database. 
-    //Results are written in the $distances array. Then this array is sorted with asort()
-    //and is passed to the view
+    //Uses AJAX GET request.
+    //If the request contains 'address' property Returns an associative array
     public function calculate(Request $request) {
         
         $places = Place::orderBy('address')->get();

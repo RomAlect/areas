@@ -29,7 +29,7 @@
             <ul id="listHeader" class="list-group mt-2">
                 <li class="list-group-item d-flex justify-content-between align-items-center bg-secondary text-white-50">
                     Address
-                    <span class="badge badge-primary badge-pill mr-5">lat / lng</span>
+                    <span class="badge badge-primary badge-pill mr-4">lat / lng</span>
                 </li>
             </ul>
             <div class="city-list">
@@ -38,7 +38,7 @@
                     @foreach($places as $place)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         {!!$place->address!!}
-                        <span class="badge badge-primary badge-pill">{{round($place->lat,3)}} / {{round($place->lng,3)}}</span>
+                        <span class="badge badge-primary badge-pill">{{round($place->lat,6)}} / {{round($place->lng,6)}}</span>
                     </li>
                     @endforeach
                     @endif

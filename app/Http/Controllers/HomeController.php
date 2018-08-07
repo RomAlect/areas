@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Place;
+use App\DistanceCalculator;
 
 
 class HomeController extends Controller {
@@ -41,6 +42,24 @@ class HomeController extends Controller {
             'lat' => $request['lat'],
             'lng' => $request['lng']
         ]);
+        
+    }
+    
+    public function edit(Request $request){
+        
+        try{
+        $place = Place::where('address', $request['address'])->first();
+        $place->address = $request['newAddress'];
+        $place->save();
+        
+        
+            $places = Place::orderBy('address')->get();     
+        }
+        catch(Exception $e){
+            return [];
+        }
+         
+        return DistanceCalculator::listAll($places);
         
     }
 

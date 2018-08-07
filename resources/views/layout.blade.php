@@ -4,7 +4,7 @@
         <title>Find Place with Geocode</title>
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
         <meta charset="utf-8">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}"/>
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('css/areas.css') }}">
 

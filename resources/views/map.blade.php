@@ -1,13 +1,14 @@
 @extends('layout')
 
 @section('content')
+<div id="editRoute" hidden>{{route('edit')}}</div>
 <div class="card left-bar">
 
-    <!--Start: 'Select the place' panel-->
+    <!--Start: 'Select place' panel-->
     <div class="container">
-        <div class="card-header font-weight-bold row mb-2">Select the place</div>
+        <div class="card-header font-weight-bold row mb-2">Select place</div>
         <div class="row d-flex mb-2">  
-            <select class="controller flex-fill mr-1" id="select_city" name="address" onchange="enableCRUD()">
+            <select class="controller flex-fill mr-1" id="select_city" onchange="enableCRUD()">
                 <option value="">City...</option>
                 @foreach($places as $place)
                 <option data-lat='{{$place->lat}}' data-lng='{{$place->lng}}'>
@@ -15,47 +16,47 @@
                 </option>
                 @endforeach
             </select>
-            <button id="show_place" class="btn btn-secondary flex-fill ml-1 crud" disabled>Show</button>  
+            <button id="show_place_btn" class="btn btn-secondary flex-fill ml-1 crud" disabled>Show</button>  
         </div>        
         <div class="row d-flex">
             <button class="btn btn-warning flex-fill mr-1 crud" disabled onclick="enableModifyPanel()">Modify</button>            
             <button class="btn btn-danger flex-fill ml-1 crud" disabled>Delete</button>
         </div>
-        
+
     </div>    
-    <!--Finish: 'Select the place' panel-->
-    
-    <!--Start: 'Modify the place' panel-->
+    <!--Finish: 'Select place' panel-->
+
+    <!--Start: 'Modify place' panel-->
     <div class="container">
         <div id="modify_panel" hidden>
             <div class="modal-header bg-warning row mt-4">
-                <h5 class="modal-title font-weight-bold" style="color: #fff">Modify the place</h5>
+                <h5 class="modal-title font-weight-bold" style="color: #fff">Modify place</h5>
                 <button class="close" style="color: #fff" onclick="disableModifyPanel()">&times;</button>
             </div>
             <div class="row d-flex">
-                <input type="text" id="modifiedCity" class="font-weight-bold flex-fill controller">
+                <input type="text" id="new_city_name" class="font-weight-bold flex-fill controller">
             </div>
             <div class="row d-flex">
-                <button type="text" id="modifiedCity" class=" btn btn-warning flex-fill mt-1">Confirm changes</button>
+                <button class="btn btn-warning flex-fill mt-1" onclick="editPlace()">Confirm changes</button>
             </div>
         </div>
     </div>
-    <!--Finish: 'Modify the place' panel-->
-    
-    <!--Start: 'Find the place' panel-->
-    
+    <!--Finish: 'Modify place' panel-->
+
+    <!--Start: 'Find place' panel-->
+
     <div class="container">
         <div class="row d-flex">
             <button id="add_btn" class="btn btn-primary flex-fill mt-4" onclick="enableFindPanel()">Add place...</button>
         </div>
-        
+
         <div id="find_panel" hidden>
-            
+
             <div class="modal-header bg-primary row mt-4">
-                <h5 class="modal-title font-weight-bold" style="color: #fff">Find the place</h5>
+                <h5 class="modal-title font-weight-bold" style="color: #fff">Find place</h5>
                 <button type="button" class="close" style="color: #fff" onclick="disableFindPanel()">&times;</button>
             </div>
-            
+
             <div class="row d-flex mt-2">
                 <label for="address" class="font-weight-bold flex-fill white-label justify-content-center mr-1">City/Place</label>                
                 <input id="address" type="text" class="controller flex-fill ml-1">
@@ -74,14 +75,14 @@
                     <h6 id="lng" class="mr-1"></h6>                    
                 </div>
             </div>
-            
+
             <div class="row d-flex mt-2">
                 <button id="add_place" class="btn btn-success flex-fill mr-1" onclick="" disabled>Add</button>
-                <button id="find_place" class="btn btn-primary flex-fill ml-1">Find</button>
+                <button id="find_place_btn" class="btn btn-primary flex-fill ml-1">Find</button>
             </div>
         </div>
     </div>
-    <!--Finish: 'Find the place' panel-->
+    <!--Finish: 'Find place' panel-->
 </div>
 
 <div id="map"></div>

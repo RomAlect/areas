@@ -13,8 +13,10 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::post('/', 'HomeController@add')->name('add');
-
 Route::get('/distances', 'DistanceController@index')->name('distances');
 
 Route::get('/calculate', 'DistanceController@calculate')->name('calculate');
+
+Route::post('/edit', 'HomeController@edit')->name('edit')->middleware('web');
+
+Route::post('/', 'HomeController@add')->name('add');
