@@ -33,7 +33,11 @@ function geocodeAddress(geocoder, resultsMap) {
             setMarkerOnMap(resultsMap, results);
             enableAddPanel(results[0].formatted_address, takeLat(prevMarker), takeLng(prevMarker));
         } else {
-            $('#mapAlert').modal();
+            showModal({
+                modalTitle: 'Google Map',
+                message: 'Geocode Service was not able to manage your request...',
+                hideOk: true
+            });
         }
     });
 }
@@ -52,7 +56,11 @@ function geocodeLatLng(geocoder, resultsMap) {
             removePreviousMarker();
             setMarkerOnMap(resultsMap, results);
         } else {
-            $('#mapAlert').modal();
+            showModal({
+                modalTitle: 'Google Map',
+                message: 'Geocode Service was not able to manage your request...',
+                hideOk: true
+            });
         }
     });
 }
@@ -161,29 +169,74 @@ function editPlace() {
     var formerAddress = $("#select_city > option:selected").val();
     var newAddress = $("#new_city_name").val();
 
-    //$('.crud').attr('disabled', true);
-    $.post(route,
-            {
-                address: formerAddress,
-                newAddress: newAddress
-            },
-            function (response) {
-                var combobox = $('#select_city');
-                combobox.empty();
-                combobox.append($('<option>', {value: ''}).text('City...'));
+    $.ajax({
+        method: "POST",
+        url: route,
+        data: {
+            address: formerAddress,
+            newAddress: newAddress
+        },
+        success: function (response) {
+            fillCombobox(response);
+            
+            $('#select_city option').filter(function () {
+                return ($(this).text() == newAddress);
+            }).prop('selected', true);
 
-                $.each(response, function (key, value) {
-                    combobox.append('<option data-lat="' + value.substring(0, value.indexOf("/") - 1)
-                            + '" data-lng="' + value.substring(value.indexOf("/") + 2) + '">'
-                            + key + '</option>');
-                });
-                
-                $('#select_city option').filter(function () {
-                    return ($(this).text() == newAddress); //To select newAddress
-                }).prop('selected', true);
+            showModal({
+                modalTitle: 'Modify',
+                message: 'Database successfully modified!',
+                hideOk: true
             });
 
+        }});
+}
 
+function showDeleteModal() {
+    var address = $("#select_city > option:selected").val();
+    showModal({
+        modalTitle: 'Delete',
+        message: 'Are you sure you want to delete "' + address + '" from the database?',
+        hideOk: false,
+        okclick: deletePlace
+    });
+}
+
+function deletePlace() {
+    var route = document.getElementById("deleteRoute").innerHTML;
+    var address = $("#select_city > option:selected").val();
+
+    $.ajax({
+        method: "POST",
+        url: route,
+        data: {
+            address: address
+        },
+        success: function (response) {
+            fillCombobox(response);
+            $('.crud').attr('disabled', true);
+        }
+    });
+}
+
+function showModal(modalDetails) {
+    $('#alert_dialog .modal-title').html(modalDetails.modalTitle);
+    $('#alert_dialog .modal-body p').html(modalDetails.message);
+    $('#ok_btn').prop('hidden', modalDetails.hideOk);
+    $('#ok_btn').bind('click', modalDetails.okclick)
+    $('#alert_dialog').modal();
+}
+
+function fillCombobox(response) {
+    var combobox = $('#select_city');
+    combobox.empty();
+    combobox.append($('<option>', {value: ''}).text('City...'));
+
+    $.each(response, function (key, value) {
+        combobox.append('<option data-lat="' + value.substring(0, value.indexOf("/") - 1)
+                + '" data-lng="' + value.substring(value.indexOf("/") + 2) + '">'
+                + key + '</option>');
+    });
 }
 
 

@@ -2,6 +2,7 @@
 
 @section('content')
 <div id="editRoute" hidden>{{route('edit')}}</div>
+<div id="deleteRoute" hidden>{{route('delete')}}</div>
 <div class="card left-bar">
 
     <!--Start: 'Select place' panel-->
@@ -20,7 +21,7 @@
         </div>        
         <div class="row d-flex">
             <button class="btn btn-warning flex-fill mr-1 crud" disabled onclick="enableModifyPanel()">Modify</button>            
-            <button class="btn btn-danger flex-fill ml-1 crud" disabled>Delete</button>
+            <button class="btn btn-danger flex-fill ml-1 crud" disabled onclick="showDeleteModal()">Delete</button>
         </div>
 
     </div>    
@@ -30,7 +31,7 @@
     <div class="container">
         <div id="modify_panel" hidden>
             <div class="modal-header bg-warning row mt-4">
-                <h5 class="modal-title font-weight-bold" style="color: #fff">Modify place</h5>
+                <h5 class="modal-title font-weight-bold" style="color: #fff">Modify place name</h5>
                 <button class="close" style="color: #fff" onclick="disableModifyPanel()">&times;</button>
             </div>
             <div class="row d-flex">
@@ -88,30 +89,31 @@
 <div id="map"></div>
 
 <!--Modal alert-->
-<div class="modal fade" id="mapAlert">
+<div class="modal fade" id="alert_dialog">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
             <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Oops!</h4>
+            <div class="modal-header bg-info"> 
+                <h4 class="modal-title"></h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
             <!-- Modal body -->
             <div class="modal-body">
-                <p class="font-weight-bold text-center">Geocode Service was not able to manage your request...</p>
-                <p class="font-weight-bold text-center">Check the City/Place input</p>
+                <p class="font-weight-bold text-center"></p>             
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="ok_btn" class="btn btn-info" data-dismiss="modal" hidden>OK</button>
+                <button class="btn btn-info" data-dismiss="modal">Cancel</button>
             </div>
 
         </div>
     </div>
 </div>
+
 
 @endsection
 
