@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace App;
+namespace App\Infrastructure;
 
 use Illuminate\Support\Collection;
 

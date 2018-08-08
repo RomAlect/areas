@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Place;
-use App\DistanceCalculator;
+use App\Infrastructure\DistanceCalculator;
 
 class DistanceController extends Controller {
 

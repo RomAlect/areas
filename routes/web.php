@@ -21,4 +21,4 @@ Route::post('/edit', 'CrudController@edit')->name('edit');
 
 Route::post('/delete', 'CrudController@delete')->name('delete');
 
-Route::post('/', 'HomeController@add')->name('add');
+Route::post('/add', 'CrudController@add')->name('add');

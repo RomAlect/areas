@@ -3,6 +3,7 @@
 @section('content')
 <div id="editRoute" hidden>{{route('edit')}}</div>
 <div id="deleteRoute" hidden>{{route('delete')}}</div>
+<div id="addRoute" hidden>{{route('add')}}</div>
 <div class="card left-bar">
 
     <!--Start: 'Select place' panel-->
@@ -55,16 +56,16 @@
 
             <div class="modal-header bg-primary row mt-4">
                 <h5 class="modal-title font-weight-bold" style="color: #fff">Find place</h5>
-                <button type="button" class="close" style="color: #fff" onclick="disableFindPanel()">&times;</button>
+                <button type="button" class="close" style="color: #fff" onclick="hideFindPanel()">&ndash;</button>
             </div>
 
             <div class="row d-flex mt-2">
-                <label for="address" class="font-weight-bold flex-fill white-label justify-content-center mr-1">City/Place</label>                
-                <input id="address" type="text" class="controller flex-fill ml-1">
+                <label for="address_to_find" class="font-weight-bold flex-fill white-label justify-content-center mr-1">City/Place</label>                
+                <input id="address_to_find" type="text" class="controller flex-fill ml-1">
             </div>
             <div id="add_panel" hidden>
                 <div class="row d-flex mt-2">
-                    <input type="text" id="cityToAdd" class="font-weight-bold flex-fill controller">
+                    <input type="text" id="city_to_add" class="font-weight-bold flex-fill controller">
                 </div>
 
                 <div class="row d-flex justify-content-between py-1 px-1" style="background-color: #fff">
@@ -78,7 +79,7 @@
             </div>
 
             <div class="row d-flex mt-2">
-                <button id="add_place" class="btn btn-success flex-fill mr-1" onclick="" disabled>Add</button>
+                <button id="add_place_btn" class="btn btn-success flex-fill mr-1" onclick="addPlace()" disabled>Add</button>
                 <button id="find_place_btn" class="btn btn-primary flex-fill ml-1">Find</button>
             </div>
         </div>
@@ -106,8 +107,8 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button id="ok_btn" class="btn btn-info" data-dismiss="modal" hidden>OK</button>
-                <button class="btn btn-info" data-dismiss="modal">Cancel</button>
+                <button id="ok_btn" class="btn btn-info" data-dismiss="modal" hidden>Yes</button>
+                <button class="btn btn-info" data-dismiss="modal">Close</button>
             </div>
 
         </div>
