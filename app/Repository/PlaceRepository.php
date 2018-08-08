@@ -5,29 +5,44 @@ namespace App\Repository;
 use App\Repository\PlaceRepositoriable;
 use App\Place;
 
-class PlaceRepository extends PlaceRepositoriable {
+class PlaceRepository implements PlaceRepositoriable {
 
-    public function getPlaceList($order = 'asc') {
-        if ($order === 'desc') {
-            return Place::orderBy('address', 'desc')->get();
+    public function getPlaceCollection($order = 'asc') {
+       return Place::orderBy('address', $order)->get();
+    }
+
+    public function getPlace($address = null, $lat = null, $lng = null) {
+        return Place::where('address', $address)
+                        ->orWhere([['lat', '=', $lat], ['lng', '=', $lng]])
+                        ->first();
+    }
+
+    //Returns 'Success', if the place succesfully added
+    //Otherwise returns 'Already exists'
+    public function addPlace($address, $lat, $lng) {
+        $cities = Place::where('address', $address)
+                ->orWhere([['lat', '=', $lat], ['lng', '=', $lng]])
+                ->get();
+        if ($cities->count() === 0) {
+            $place = new Place();
+            $place->address = $address;
+            $place->lat = $lat;
+            $place->lng = $lng;
+            $place->save();
+
+            return 'Success';
         } else {
-            return Place::orderBy('address')->get();
+            return 'Already exists';
         }
     }
 
-    public function getPlace($address){
-        return Place::where('address', $address)->first();
+    public function deletePlace($address) {
+        Place::where('address', $address)->delete();
     }
 
-    public function addPlace($address){
-        
+    public function editPlace($address, $newAddress) {
+        Place::where('address', $address)
+                ->update(['address' => $newAddress]);
     }
 
-    public function deletePlace($address){
-        
-    }
-
-    public function editPlace($address){
-        
-    }
 }

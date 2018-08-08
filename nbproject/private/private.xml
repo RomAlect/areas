@@ -3,20 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/app/Repository/PlaceRepositoriable.php</file>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/app/Http/Controllers/DistanceController.php</file>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/public/js/ajaxCRUD.js</file>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/app/Http/Controllers/CrudController.php</file>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/app/Http/Controllers/Controller.php</file>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/app/Providers/AppServiceProvider.php</file>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/public/css/bootstrap.css</file>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/resources/views/map.blade.php</file>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/routes/web.php</file>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/app/Infrastructure/DistanceCalculator.php</file>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/public/css/areas.css</file>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/public/js/map.js</file>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/app/Repository/PlaceRepository.php</file>
-            <file>file:/D:/YandexDisk/YandexDisk/OSPanel/domains/areas/app/Http/Controllers/HomeController.php</file>
+            <file>file:/D:/OSPanel/domains/areas/app/Repository/PlaceRepository.php</file>
+            <file>file:/D:/OSPanel/domains/areas/app/Http/Controllers/HomeController.php</file>
+            <file>file:/D:/OSPanel/domains/areas/app/Http/Controllers/DistanceController.php</file>
+            <file>file:/D:/OSPanel/domains/areas/public/js/map.js</file>
+            <file>file:/D:/OSPanel/domains/areas/routes/web.php</file>
+            <file>file:/D:/OSPanel/domains/areas/app/Http/Controllers/CrudController.php</file>
         </group>
     </open-files>
 </project-private>
