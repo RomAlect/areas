@@ -56,7 +56,7 @@
 
             <div class="modal-header bg-primary row mt-4">
                 <h5 class="modal-title font-weight-bold" style="color: #fff">Find place</h5>
-                <button type="button" class="close" style="color: #fff" onclick="hideFindPanel()">&ndash;</button>
+                <button class="close" style="color: #fff" onclick="hideFindPanel()">&ndash;</button>
             </div>
 
             <div class="row d-flex mt-2">

@@ -5,7 +5,11 @@
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
         <meta charset="utf-8">
         <meta name="csrf-token" content="{{ csrf_token() }}"/>
+        @if(env('APP_DEBUG'))
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        @else
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        @endif
         <link rel="stylesheet" href="{{ asset('css/areas.css') }}">
 
     </head>
@@ -23,6 +27,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
         <script src="{{asset('js/ajaxCRUD.js')}}"></script>
         <script src="{{asset('js/map.js')}}"></script>
+        
         @yield('googleMap')
     </body>
 </html>

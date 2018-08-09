@@ -5,14 +5,16 @@ function initMap() {
         zoom: 5,
         center: {lat: 44.613873, lng: 33.3578383}
     });
-    var geocoder = new google.maps.Geocoder();
-
-    $('#find_place_btn').bind('click', function () {
-        geocodeAddress(geocoder, map);
-    });
+    var geocoder = new google.maps.Geocoder();    
 
     $('#show_place_btn').bind('click', function () {
         geocodeLatLng(geocoder, map);
+        hideFindPanel();
+        clearFindPanel();
+    });
+    
+    $('#find_place_btn').bind('click', function () {
+        geocodeAddress(geocoder, map);
     });
 
     $('#address_to_find').bind("keydown", function (event) {
@@ -106,12 +108,12 @@ function removePreviousMarker() {
     }
 }
 
-function enableAddPanel(address, latitude, longitude) {
-    $('#city_to_add').attr('value', address);
+function enableAddPanel(address, latitude, longitude) { 
+    $('#city_to_add').val(address);
     $('#lat').text(latitude);
     $('#lng').text(longitude);
-    $('#add_panel').attr('hidden', false);
-    $('#add_place_btn').attr('disabled', false);
+    $('#add_panel').prop('hidden', false);
+    $('#add_place_btn').prop('disabled', false);
 }
 
 function enableCRUD() {
